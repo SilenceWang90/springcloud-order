@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: order
+  datasource:
+    #�����趨�ַ�����������������ʱ����Ϊ�ַ�������
+    #�߰汾��mysql����ʱ��Ҫssl���ã����û������Ϊfalse��
+    url: jdbc:mysql://127.0.0.1:3306/wptest1?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: Wangpeng90
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      #���ڷ����Ҳ�ǿͻ��ˣ���˷�ֹ�����Ҳ���ע�����Ķ�һֱ����(Ĭ��ȥ8761�˿���ע�����һ��Ӧ�÷���Ĭ��8080���϶�ע�᲻��)
+      defaultZone: http://localhost:8761/eureka/
