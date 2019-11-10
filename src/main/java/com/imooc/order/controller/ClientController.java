@@ -26,15 +26,15 @@ public class ClientController {
 
         /**2、第二种方式（利用loadBalanceClient通过应用名获取url，然后再使用restTemplate）*/
         /**好处是可以达到负载均衡，但是每次都要拼接url信息*/
-        /*ServiceInstance serviceInstance = loadBalancerClient.choose("PRODUCT");
+        ServiceInstance serviceInstance = loadBalancerClient.choose("PRODUCT");
         String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort()) + "/server/msg";
         log.info("url是：{}",url);
         RestTemplate restTemplate = new RestTemplate();
-        String response = restTemplate.getForObject(url, String.class);*/
+        String response = restTemplate.getForObject(url, String.class);
 
         /**3、第三种方式（通过bean和注解的方式，@LoadBalanced）*/
-        String response = restTemplate.getForObject("http://PRODUCT/server/msg",String.class);
-        log.info("response={}", response);
+        /*String response = restTemplate.getForObject("http://PRODUCT/server/msg",String.class);
+        log.info("response={}", response);*/
         return response;
     }
 }

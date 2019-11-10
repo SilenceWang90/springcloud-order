@@ -16,3 +16,6 @@ eureka:
     service-url:
       #���ڷ����Ҳ�ǿͻ��ˣ���˷�ֹ�����Ҳ���ע�����Ķ�һֱ����(Ĭ��ȥ8761�˿���ע�����һ��Ӧ�÷���Ĭ��8080���϶�ע�᲻��)
       defaultZone: http://localhost:8761/eureka/
+PRODUCT:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
