@@ -32,7 +32,7 @@ public class ClientController {
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForObject(url, String.class);*/
 
-        /**3、第三种方式（通过bean的方式）*/
+        /**3、第三种方式（通过bean和注解的方式，@LoadBalanced）*/
         String response = restTemplate.getForObject("http://PRODUCT/server/msg",String.class);
         log.info("response={}", response);
         return response;
