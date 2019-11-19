@@ -2,8 +2,8 @@ spring:
   application:
     name: order
   datasource:
-    #²ÎÊıÉè¶¨×Ö·û¼¯£¬·ñÔòÁ´½ÓÊı¾İÊ±»áÒòÎª×Ö·û¼¯±¨´í
-    #¸ß°æ±¾µÄmysqlÁ¬½ÓÊ±ĞèÒªsslÅäÖÃ£¬Èç¹ûÃ»ÓĞÉèÖÃÎªfalse¡£
+    #å‚æ•°è®¾å®šå­—ç¬¦é›†ï¼Œå¦åˆ™é“¾æ¥æ•°æ®æ—¶ä¼šå› ä¸ºå­—ç¬¦é›†æŠ¥é”™
+    #é«˜ç‰ˆæœ¬çš„mysqlè¿æ¥æ—¶éœ€è¦sslé…ç½®ï¼Œå¦‚æœæ²¡æœ‰è®¾ç½®ä¸ºfalseã€‚
     url: jdbc:mysql://127.0.0.1:3306/wptest1?useUnicode=true&useSSL=false&characterEncoding=utf8
     username: root
     password: Wangpeng90
@@ -14,9 +14,9 @@ spring:
 eureka:
   client:
     service-url:
-      #ÓÉÓÚ·şÎñ¶ËÒ²ÊÇ¿Í»§¶Ë£¬Òò´Ë·ÀÖ¹×ÔÉíÕÒ²»µ½×¢²áÖĞĞÄ¶øÒ»Ö±±¨´í(Ä¬ÈÏÈ¥8761¶Ë¿ÚÕÒ×¢²á·şÎñ£¬Ò»°ãÓ¦ÓÃ·şÎñÄ¬ÈÏ8080£¬¿Ï¶¨×¢²á²»ÉÏ)
+      #ç”±äºæœåŠ¡ç«¯ä¹Ÿæ˜¯å®¢æˆ·ç«¯ï¼Œå› æ­¤é˜²æ­¢è‡ªèº«æ‰¾ä¸åˆ°æ³¨å†Œä¸­å¿ƒè€Œä¸€ç›´æŠ¥é”™(é»˜è®¤å»8761ç«¯å£æ‰¾æ³¨å†ŒæœåŠ¡ï¼Œä¸€èˆ¬åº”ç”¨æœåŠ¡é»˜è®¤8080ï¼Œè‚¯å®šæ³¨å†Œä¸ä¸Š)
       defaultZone: http://localhost:8761/eureka/
-#ĞŞ¸Ä¸ºÔØ¾ùºâ²ßÂÔ
-        ##PRODUCT:
-      ##  ribbon:
-      ##    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#ä¿®æ”¹è´Ÿè½½å‡è¡¡ç­–ç•¥
+#PRODUCT:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
