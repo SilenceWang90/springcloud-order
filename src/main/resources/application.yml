@@ -16,7 +16,8 @@ eureka:
     service-url:
       #由于服务端也是客户端，因此防止自身找不到注册中心而一直报错(默认去8761端口找注册服务，一般应用服务默认8080，肯定注册不上)
       defaultZone: http://localhost:8761/eureka/
-#修改负载均衡策略
+##修改负载均衡策略
+##服务名称
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
