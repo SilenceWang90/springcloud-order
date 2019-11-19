@@ -1,5 +1,6 @@
 package com.imooc.order.controller;
 
+import com.imooc.order.client.ProductClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -15,10 +16,17 @@ public class ClientController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
     @Autowired
-    private RestTemplate restTemplate;
+    private ProductClient productClient;
 
-    @RequestMapping("/getProductMsg")
-    public String getProductMsg() {
+    @RequestMapping("/getProductMsgByFeign")
+    public String getProductMsgByFeign(){
+        String response = productClient.msg();
+        log.info("response={}", response);
+        return response;
+    }
+
+    @RequestMapping("/getProductMsgByRestTemplate")
+    public String getProductMsgByRestTemplate() {
         /**1、第一种方式（直接使用restTemplate，url写死）*/
         /**缺陷，ip写死，无法负载均衡*/
         /*RestTemplate restTemplate = new RestTemplate();
@@ -37,4 +45,6 @@ public class ClientController {
         log.info("response={}", response);*/
         return response;
     }
+
+
 }
