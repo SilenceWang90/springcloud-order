@@ -2,8 +2,8 @@ spring:
   application:
     name: order
   datasource:
-    #�����趨�ַ�����������������ʱ����Ϊ�ַ�������
-    #�߰汾��mysql����ʱ��Ҫssl���ã����û������Ϊfalse��
+    #参数设定字符集，否则链接数据时会因为字符集报错
+    #高版本的mysql连接时需要ssl配置，如果没有设置为false。
     url: jdbc:mysql://127.0.0.1:3306/wptest1?useUnicode=true&useSSL=false&characterEncoding=utf8
     username: root
     password: Wangpeng90
@@ -14,8 +14,10 @@ spring:
 eureka:
   client:
     service-url:
-      #���ڷ����Ҳ�ǿͻ��ˣ���˷�ֹ�����Ҳ���ע�����Ķ�һֱ����(Ĭ��ȥ8761�˿���ע�����һ��Ӧ�÷���Ĭ��8080���϶�ע�᲻��)
+      #由于服务端也是客户端，因此防止自身找不到注册中心而一直报错(默认去8761端口找注册服务，一般应用服务默认8080，肯定注册不上)
       defaultZone: http://localhost:8761/eureka/
-PRODUCT:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+##修改负载均衡策略
+##服务名称
+#PRODUCT:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
