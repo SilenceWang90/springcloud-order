@@ -2,6 +2,7 @@ package com.imooc.order.controller;
 
 import com.imooc.order.client.ProductClient;
 import com.imooc.order.dataobject.ProductInfo;
+import com.imooc.order.dto.CartDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -53,6 +54,12 @@ public class ClientController {
     @RequestMapping("/getProductList")
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
         return productClient.listForOrder(productIdList);
+    }
+
+    @RequestMapping("/decreaseStock")
+    public String decreaseStock(@RequestBody List<CartDTO> cartDTOList){
+        productClient.decreaseStock(cartDTOList);
+        return "ok";
     }
 
 }
