@@ -13,8 +13,14 @@
     <artifactId>order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>order</name>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
+    <modules>
+        <module>server</module>
+        <module>common</module>
+        <module>client</module>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
