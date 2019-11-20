@@ -1,13 +1,17 @@
 package com.imooc.order.controller;
 
 import com.imooc.order.client.ProductClient;
+import com.imooc.order.dataobject.ProductInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/client")
@@ -46,5 +50,9 @@ public class ClientController {
         return response;
     }
 
+    @RequestMapping("/getProductList")
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
+        return productClient.listForOrder(productIdList);
+    }
 
 }

@@ -1,7 +1,10 @@
 package com.imooc.order.client;
 
+import com.imooc.order.dataobject.ProductInfo;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @Classname ProductClient
@@ -13,4 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface ProductClient {
     @RequestMapping("/server/msg")
     String msg();
+
+    @RequestMapping("/product/listForOrder")
+    List<ProductInfo> listForOrder(List<String> productIdList);
 }
