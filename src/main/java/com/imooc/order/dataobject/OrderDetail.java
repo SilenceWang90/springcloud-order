@@ -15,11 +15,11 @@ public class OrderDetail {
     @Id
     private String detailId;
     //订单id
-    private String orderid;
+    private String orderId;
     //商品id
     private String productId;
     //商品名称
-    private Integer productName;
+    private String productName;
     //单价
     private BigDecimal productPrice;
     //商品数量
