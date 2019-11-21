@@ -1,8 +1,8 @@
 package com.imooc.order.controller;
 
-import com.imooc.order.client.ProductClient;
-import com.imooc.order.dataobject.ProductInfo;
-import com.imooc.order.dto.CartDTO;
+import com.imooc.product.client.ProductClient;
+import com.imooc.product.common.DecreaseStockInput;
+import com.imooc.product.common.ProductInfoOutput;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -23,13 +23,6 @@ public class ClientController {
     @Autowired
     private ProductClient productClient;
 
-    @RequestMapping("/getProductMsgByFeign")
-    public String getProductMsgByFeign(){
-        String response = productClient.msg();
-        log.info("response={}", response);
-        return response;
-    }
-
     @RequestMapping("/getProductMsgByRestTemplate")
     public String getProductMsgByRestTemplate() {
         /**1、第一种方式（直接使用restTemplate，url写死）*/
@@ -41,7 +34,7 @@ public class ClientController {
         /**好处是可以达到负载均衡，但是每次都要拼接url信息*/
         ServiceInstance serviceInstance = loadBalancerClient.choose("PRODUCT");
         String url = String.format("http://%s:%s", serviceInstance.getHost(), serviceInstance.getPort()) + "/server/msg";
-        log.info("url是：{}",url);
+        log.info("url是：{}", url);
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForObject(url, String.class);
 
@@ -52,12 +45,12 @@ public class ClientController {
     }
 
     @RequestMapping("/getProductList")
-    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList){
+    public List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList) {
         return productClient.listForOrder(productIdList);
     }
 
     @RequestMapping("/decreaseStock")
-    public String decreaseStock(@RequestBody List<CartDTO> cartDTOList){
+    public String decreaseStock(@RequestBody List<DecreaseStockInput> cartDTOList) {
         productClient.decreaseStock(cartDTOList);
         return "ok";
     }

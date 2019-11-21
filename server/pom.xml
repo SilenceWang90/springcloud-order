@@ -61,6 +61,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.imooc</groupId>
+            <artifactId>product-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

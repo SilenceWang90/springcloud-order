@@ -1,10 +1,7 @@
 package com.imooc.order.service.impl;
 
-import com.imooc.order.client.ProductClient;
 import com.imooc.order.dataobject.OrderDetail;
 import com.imooc.order.dataobject.OrderMaster;
-import com.imooc.order.dataobject.ProductInfo;
-import com.imooc.order.dto.CartDTO;
 import com.imooc.order.dto.OrderDTO;
 import com.imooc.order.enums.OrderStatusEnum;
 import com.imooc.order.enums.PayStatusEnum;
@@ -12,6 +9,9 @@ import com.imooc.order.repository.OrderDetailRepository;
 import com.imooc.order.repository.OrderMasterRepository;
 import com.imooc.order.service.OrderService;
 import com.imooc.order.utils.KeyUtil;
+import com.imooc.product.client.ProductClient;
+import com.imooc.product.common.DecreaseStockInput;
+import com.imooc.product.common.ProductInfoOutput;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,11 +34,11 @@ public class OrderServiceImpl implements OrderService {
         String orderId = KeyUtil.genUniqueKey();
         /**1、查询商品信息*/
         List<String> productIdList = orderDTO.getOrderDetailList().stream().map(OrderDetail::getProductId).collect(Collectors.toList());
-        List<ProductInfo> productInfoList = productClient.listForOrder(productIdList);
+        List<ProductInfoOutput> productInfoList = productClient.listForOrder(productIdList);
         /**2、计算总价*/
         BigDecimal orderAmount = BigDecimal.ZERO;
         for (OrderDetail orderDetail : orderDTO.getOrderDetailList()) {
-            for (ProductInfo productInfo : productInfoList) {
+            for (ProductInfoOutput productInfo : productInfoList) {
                 if (productInfo.getProductId().equals(orderDetail.getProductId())) {
                     orderAmount = productInfo.getProductPrice().multiply(new BigDecimal(orderDetail.getProductQuantity())).add(orderAmount);
                     BeanUtils.copyProperties(productInfo, orderDetail);
@@ -50,8 +50,8 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         /**3、扣库存(调用商品服务)*/
-        List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().stream().map(obj -> {
-            CartDTO cartDTO = new CartDTO();
+        List<DecreaseStockInput> cartDTOList = orderDTO.getOrderDetailList().stream().map(obj -> {
+            DecreaseStockInput cartDTO = new DecreaseStockInput();
             cartDTO.setProductId(obj.getProductId());
             cartDTO.setProductQuantity(obj.getProductQuantity());
             return cartDTO;
