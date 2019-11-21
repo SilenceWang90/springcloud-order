@@ -15,13 +15,14 @@ import java.util.List;
  * @Created by wangpeng116
  */
 @FeignClient(name = "product")
+@RequestMapping("/product")
 public interface ProductClient {
     @RequestMapping("/server/msg")
     String msg();
 
-    @RequestMapping("/product/listForOrder")
-    List<ProductInfo> listForOrder(List<String> productIdList);
+    @RequestMapping("/listForOrder")
+    List<ProductInfo> listForOrder(@RequestBody List<String> productIdList);
 
-    @RequestMapping("/product/decreaseStock")
+    @RequestMapping("/decreaseStock")
     void decreaseStock(@RequestBody List<CartDTO> cartDTOList);
 }
