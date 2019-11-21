@@ -10,7 +10,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>server</artifactId>
+    <artifactId>order-server</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
