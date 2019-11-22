@@ -13,6 +13,12 @@ spring:
       #文件名称中的label(分支名称)
       label: master
       name: order
+#因为配置中心的配置中要查询service-id中的配置中心服务，因此需要先将客户端注册到服务中心才能
+#找到配置中心的服务，不然启动时会报错
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 ##修改负载均衡策略
 ##服务名称
 #PRODUCT:
