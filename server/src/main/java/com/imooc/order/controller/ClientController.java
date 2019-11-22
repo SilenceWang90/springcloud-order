@@ -5,6 +5,7 @@ import com.imooc.product.common.DecreaseStockInput;
 import com.imooc.product.common.ProductInfoOutput;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,9 @@ public class ClientController {
     private LoadBalancerClient loadBalancerClient;
     @Autowired
     private ProductClient productClient;
+
+    @Value("${env}")
+    private String env;
 
     @RequestMapping("/getProductMsgByRestTemplate")
     public String getProductMsgByRestTemplate() {
@@ -53,6 +57,12 @@ public class ClientController {
     public String decreaseStock(@RequestBody List<DecreaseStockInput> cartDTOList) {
         productClient.decreaseStock(cartDTOList);
         return "ok";
+    }
+
+    @RequestMapping("/print")
+    public String printEnv() {
+        log.info("当前环境为：{}",env);
+        return env;
     }
 
 }
