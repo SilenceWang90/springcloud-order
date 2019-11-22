@@ -1,6 +1,5 @@
 package com.imooc.order.controller;
 
-import com.google.common.collect.Maps;
 import com.imooc.order.VO.ResultVO;
 import com.imooc.order.converter.Orderform2OrderDTOConverter;
 import com.imooc.order.dto.OrderDTO;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -52,11 +52,10 @@ public class OrderController {
         }
         //2、保存订单
         OrderDTO result = orderService.create(orderDTO);
-        Map<String, String> map = Maps.newHashMap();
+        Map<String, String> map = new HashMap();
         map.put("orderId", result.getOrderId());
         return ResultVOUtil.success(map);
     }
-
 
 
 }
