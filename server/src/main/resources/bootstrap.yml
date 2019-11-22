@@ -3,12 +3,16 @@ spring:
     name: order
   cloud:
     config:
-      #启用配置中心客户端
-      enabled: true
       discovery:
+        #启用配置中心客户端
+        enabled: true
         #注册中心服务名称，如果写错，则从127.0.0.1:8888服务中查找
         service-id: config-server
+      #文件名称中的profile(环境名称)
       profile: dev
+      #文件名称中的label(分支名称)
+      label: master
+      name: order
 ##修改负载均衡策略
 ##服务名称
 #PRODUCT:
