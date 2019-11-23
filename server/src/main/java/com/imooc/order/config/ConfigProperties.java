@@ -12,4 +12,5 @@ import org.springframework.stereotype.Component;
 public class ConfigProperties {
     private String name;
     private String age;
+    private Type type;
 }
