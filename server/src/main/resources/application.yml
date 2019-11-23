@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        #消息队列名称
+        myMesageInput:
+          #设置分组名称，可以是应用名之类的都可以
+          group: order
+          #消息反序列化为json，这样可以再控制台中查看具体消息内容
+          content-type: application/json
