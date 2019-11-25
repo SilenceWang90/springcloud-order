@@ -12,13 +12,13 @@ public interface StreamClient {
      * 手动接收消息
      * @return
      */
-    @Input(StreamClient.MyMesageInput)
+//    @Input(StreamClient.MyMesageInput)
     SubscribableChannel input();
 
     /**
      * 发送消息
      * @return
      */
-    @Output(StreamClient.MyMesageOutPut)
+//    @Output(StreamClient.MyMesageOutPut)
     MessageChannel output();
 }

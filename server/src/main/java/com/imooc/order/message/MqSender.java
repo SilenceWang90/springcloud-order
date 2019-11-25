@@ -10,12 +10,12 @@ import java.util.Date;
 @RestController
 @RequestMapping("/mqSender")
 public class MqSender {
-    @Autowired
+    /*@Autowired
     private AmqpTemplate amqpTemplate;
 
     @RequestMapping("/sendMqMessage")
     public String sendMqMessage() {
         amqpTemplate.convertAndSend("myQueue", new Date());
         return "ok";
-    }
+    }*/
 }

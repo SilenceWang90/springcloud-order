@@ -9,14 +9,13 @@ import org.springframework.stereotype.Component;
 /**
  * 消息接收方
  */
-@Component
-@EnableBinding(StreamClient.class)
+/*@Component
+@EnableBinding(StreamClient.class)*/
 @Slf4j
 public class StreamReceiver {
-
-    @StreamListener(StreamClient.MyMesageInput)
+    /*@StreamListener(StreamClient.MyMesageInput)
     @SendTo(StreamClient.MyMesageOutPut)
     public void process(Object object){
         log.info("StreamReceiver is ：{}",object);
-    }
+    }*/
 }
