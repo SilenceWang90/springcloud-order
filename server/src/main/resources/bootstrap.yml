@@ -24,3 +24,16 @@ eureka:
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#超时配置的全局配置，针对有所的服务
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 5000
+#超时配置的指定配置，针对指定的服务
+feign:
+  client:
+    config:
+      #应用名称
+      product:
+        connectTimeout: 10000
+        readTimeout: 30000
