@@ -24,7 +24,9 @@ import java.util.List;
 @Slf4j
 public class HystrixController {
 
-    @HystrixCommand(fallbackMethod = "fallback")
+    @HystrixCommand(fallbackMethod = "fallback", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+    })
     @GetMapping("/getProductInfoList")
     public String getProductInfoList() {
         RestTemplate restTemplate = new RestTemplate();
@@ -37,7 +39,7 @@ public class HystrixController {
             @HystrixProperty(name = "maxQueueSize", value = "1"),
     })
     @GetMapping("/productInfoList")
-    public String productInfoLista() {
+    public String productInfoList() {
         RestTemplate restTemplate = new RestTemplate();
         List<String> paramters = Lists.newArrayList("157875196366160022");
         log.info("我再运行");
