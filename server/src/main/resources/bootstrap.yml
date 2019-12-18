@@ -37,3 +37,17 @@ feign:
       product:
         connectTimeout: 10000
         readTimeout: 30000
+#hystrix超时设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+    #为此方法单独设置超时时间，默认如果增加了@HystrixCommand方法不设置commandKey配置时，方法名就是默认的
+    prodInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
