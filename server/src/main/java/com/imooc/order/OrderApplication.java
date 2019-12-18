@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableFeignClients(basePackages = "com.imooc.product.client")
 @EnableCircuitBreaker
 //增加扫描范围，因为jar中的bean需要扫描到的话就需要增加扫描的路径
-@ComponentScan(basePackages = "com.imooc.product")
+@ComponentScan(basePackages = "com.imooc")
 public class OrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class, args);
