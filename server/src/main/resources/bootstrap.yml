@@ -31,9 +31,9 @@ ribbon:
   ReadTimeout: 5000
 #超时配置的指定配置，针对指定的服务
 feign:
-  #feign启用hystrix
-  hystrix:
-    enabled: true
+#  #feign启用hystrix
+#  hystrix:
+#    enabled: true
   client:
     config:
       #应用名称
